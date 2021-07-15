@@ -43,40 +43,35 @@ using namespace std;
 
 #define mod 1000000007
 
-    vector<ll> l(100009);
-    vector<ll> r(100009);
-    
+
+// prefix sun of 1st n odd number == (n*n) // perfect squre
 void solve(){
     in1(n);
-    ll sum=0;
-    InArrSum(a,n,sum);
 
-    if(n==1) {printls(1); return;}
+    // ll c=1;
+    // ll mx =1;
+    // ll k=1;
+
+    // while(mx < n){
+    //     k+=2;
+
+    //     c++;
+
+    //     printls(mx);
+
+    //     mx +=k;
+    // }
+    // println(c);
 
 
 
-    l[0]=a[0];
-    r[n-1]=a[n-1];
+// prefix sun of 1st n odd number == (n*n) // perfect squre
 
-    fl(i,1,n){
-        l[i] = __gcd(l[i-1],a[i]);
-    }
-    for(ll i=n-2;i>=0;i--){
-        r[i] = __gcd(r[i+1],a[i]);
-    }
+    ll k = floor(sqrt(n)); 
 
-
-    ll mn = INT_MAX,ans=0;
-
-    fl(i,0,n){
-        ans = (sum - a[i] +__gcd(l[i-1],r[i+1])) / __gcd(l[i-1],r[i+1]);
-        mn = min(mn,ans);
-    }
-
-    println(mn);
+    if(n == k*k) println(k);
+    else println(k+1);
     
-    
-
 }
 
 //int32_t 

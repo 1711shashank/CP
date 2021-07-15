@@ -43,40 +43,37 @@ using namespace std;
 
 #define mod 1000000007
 
-    vector<ll> l(100009);
-    vector<ll> r(100009);
-    
+ 
+// I understood this function from https://www.youtube.com/watch?v=Ps7WTnDuE80 
+
+// summary => 
+    // replace all duplicate consecutive value ==> 100011100 ==> 1010
+    // then number of least occurring value +1 will give the answer 
+ll minSteps(string s)
+{
+    ll c=1;
+    fl(i,1,sz(s)){
+        if( s[i-1] != s[i]) c++;
+    }
+    return (c/2 +1);
+
+}
+
 void solve(){
-    in1(n);
-    ll sum=0;
-    InArrSum(a,n,sum);
+    in3(n,a,b);
+    ins(s);
 
-    if(n==1) {printls(1); return;}
+    ll ans = a*n;
 
-
-
-    l[0]=a[0];
-    r[n-1]=a[n-1];
-
-    fl(i,1,n){
-        l[i] = __gcd(l[i-1],a[i]);
+    if(b>=0) {
+        ans += b*n;
     }
-    for(ll i=n-2;i>=0;i--){
-        r[i] = __gcd(r[i+1],a[i]);
+    else {
+        ll mn = minSteps(s);
+        ans += mn*b;
     }
-
-
-    ll mn = INT_MAX,ans=0;
-
-    fl(i,0,n){
-        ans = (sum - a[i] +__gcd(l[i-1],r[i+1])) / __gcd(l[i-1],r[i+1]);
-        mn = min(mn,ans);
-    }
-
-    println(mn);
+    println(ans);
     
-    
-
 }
 
 //int32_t 
