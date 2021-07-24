@@ -70,58 +70,24 @@ using namespace std;
 
 #define mod 1000000007
 
+//A_T_
 void solve()
 {
     in1(n);
-    InVec(a, n);
-    InVec(b, n);
-
-    sort(all(a), dsc);
-    sort(all(b), dsc);
-
-    ll k = n - (n / 4);
-
-    ll mySum = 0, llyaSum = 0;
-
-    fl(i, 0, k)
+    ll ans = 0;
+    while (n--)
     {
-        mySum += a[i];
-        llyaSum += b[i];
-    }
+        in1(x);
+        ans += x - 1; // number of extra vertices can be added
 
-    if (mySum >= llyaSum)
-    {
-        p1(0);
-        return;
-    }
-    else
-    {
-        ll myK = k, llK = k;
-        ll req = 4 - (n % 4);
-        ll ans = 0;
-        while (mySum < llyaSum)
+        if (ans & 1)
         {
-            ans++;
-
-            
-
-            if (ans == req)
-            {
-                mySum += (100 - a[myK - 1]);
-                myK--;
-                req += 4;
-            }
-            else
-            {
-                mySum += 100;
-                if (llK < n)
-                {   
-                    llyaSum += b[llK];
-                    llK++;
-                }
-            }
+            p1(1);
         }
-        p1(ans);
+        else
+        {
+            p1(2);
+        }
     }
 }
 
@@ -133,9 +99,15 @@ int32_t main()
     cin.tie(0);
     cout.tie(0);
 
-    in1(T);
-    while (T--)
-        solve();
+    // #ifndef ONLINE_JUDGE
+    //     // for getting input from input.txt
+    //     freopen("input.txt", "r", stdin);
+    //     // for writing output to output.txt
+    //     freopen("output.txt", "w", stdout);
+    // #endif
+
+    //in1(T);  while(T--)
+    solve();
 
     return 0;
     // return 0LL;
