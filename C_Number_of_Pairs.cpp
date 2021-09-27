@@ -45,19 +45,23 @@ using namespace std;
 
 void solve(){
     in3(n,l,r);
-    vector<ll> v;
-    fl(i,0,n){
-        in1(x);
-        if(x<r) v.pb(x); 
-    }
-    n=sz(v);
-    ll ans=0;
-    fl(i,0,n){
-        fl(j,i+1,n){
-            if(l <= v[i]+v[j]  && v[i]+v[j] <= r) ans++;
+    InArr(a,n);
+    sort(a,a+n);
+    ll s=0,e=n-1;
+
+    ll c=0;
+    while(s<e){
+        if( l > a[s]+a[e]){
+            s++;
+            c++;
         }
+        else if(r < a[s]+a[e]){
+            e--;
+            c++;
+        }
+        else break;
     }
-    println(ans);
+    p1(c);
 }
 
 //int32_t 

@@ -1,66 +1,83 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll                          long long
+#define pb                          push_back
+#define ff                          first
+#define ss                          second
 
-#define fl(i,a,b)                   for(int i=a;i<b;i++)
+#define mem(arr,val)                memset(arr, val, sizeof(arr))
+#define ps(n,l)                     fixed<<setprecision(l)<<n
+#define lcm(a,b)                    (a/__gcd(a,b))*b
 
-#define inS(s)                      string s; cin>>s;
-#define in1(a)                      int a;          cin>>a;
-#define in2(a, b)                   int a, b;       cin >> a >> b;
-#define in3(a, b, c)                int a, b, c;    cin >> a >> b >> c;
+#define fl(i,a,b)                   for(ll i=a; i<b; i++)
+#define fr(i,a,b)                   for(ll i=b-1; i>=a; i--)
 
-#define InVec(v,n)               vector<int> v(n); fl(i,0,n) cin>>v[i];
-#define InArr(a,n)               int a[n]; fl(i,0,n) cin>>a[i];
-#define len(s)                      s.length()
+#define ins(s)                      string s;          cin>>s;
+#define in1(a)                      ll a;              cin>>a;
+#define in2(a, b)                   ll a, b;           cin >> a >> b;
+#define in3(a, b, c)                ll a, b, c;        cin >> a >> b >> c;
+#define in4(a, b, c, d)             ll a, b, c, d;     cin >> a >> b >> c >> d;
 
-#define dsc                         greater<int>()
+#define InVec(v,n)                  vector<ll> v(n); fl(i,0,n) {cin>>v[i];}
+#define InArr(a,n)                  ll a[n]; fl(i,0,n) {cin>>a[i];}
+#define InArrSum(a,n,sum)           ll a[n]; fl(i,0,n) {cin>>a[i]; sum += a[i];}
+#define InVecSum(v,n,sum)           vector<ll> v(n); fl(i,0,n) {cin>>v[i]; sum += v[i];}
+
+#define sz(s)                       s.size()
+
+#define dsc                         greater<ll>()
 #define all(x)                      (x).begin(), (x).end()
 
-#define println(n)                  cout << n << "\n"   
-#define printls(n)                  cout << n << " "
-#define print(n)                    cout << n
+#define pln(n)                      cout << n << "\n"   
+#define pls(n)                      cout << n << " "   
+#define pt(n)                       cout << n
+#define ln                          cout << "\n"   
 
-void solve(){
-    ll x;
-    cin>>x;
+#define pmap(mp)                    for(auto i: mp) {p2(i.ff,i.ss);}
+#define printArrVec(a)              for(auto it:a)  {cout<<it<<" ";} ln;
+#define p1(a);                      cout<< a << "\n";   
+#define p2(a,b);                    cout<< a <<" "<< b << "\n";      
+#define p3(a,b,c);                  cout<< a <<" "<< b <<" "<< c << "\n";
+#define YES                         pln("YES")
+#define Yes                         pln("Yes")
+#define NO                          pln("NO")
+#define No                          pln("No")
 
-    if(x==1) {println(1); return;}
-    ll n=0;
+#define mod 1000000007
 
-    vector<ll> v;
-    int z=0;
-    v.push_back(0);
-    ll temp;
+// look for time complexity  
 
-    while(true){
-        n++;
-        z++;
-        if(n%2==1){
-
-        
-            temp = (n*(n+1))/2;
-            v.push_back(v.back() + temp);
-
-            if(v.back() >= x) {
-                v.pop_back();
-                println(v.size()-1);
-                break;
-            } 
-        }
-    }
-    // for (auto ir = v.begin(); ir != v.end(); ++ir)
-    //             cout << *ir << " "; cout<<endl;
+ll getS( ll n ){
+     return n*(n+1)/2;
 }
+
+// 1 4 16 ....
+// 1 5 21 .....
+// 1 6 28 ......
+void solve(){
+    in1(n);
+    
+    ll ans =0;
+    for(ll i=1; ; i++){
+        
+        if( n < getS((1<<i) -1) ) break;
+
+        ans++;
+        n-= getS((1<<i) -1);
+        
+    }
+    p1(ans);
+}
+
+
 
 //int32_t 
 int32_t main(){
 
     ios_base::sync_with_stdio(false);
-	cin.tie(0);cout.tie(0);
+    cin.tie(0);cout.tie(0);
 
-    int T;
-	cin >> T;
-	while(T--) 
+    in1(T);  while(T--)  
         solve();
         
     return 0;

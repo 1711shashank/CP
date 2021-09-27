@@ -18,51 +18,56 @@ using namespace std;
 #define in3(a, b, c)                ll a, b, c;        cin >> a >> b >> c;
 #define in4(a, b, c, d)             ll a, b, c, d;     cin >> a >> b >> c >> d;
 
-#define InVec(v,n)                  vector<ll> v(n); fl(i,0,n) cin>>v[i];
-#define InArr(a,n)                  ll a[n]; fl(i,0,n) cin>>a[i];
+#define InVec(v,n)                  vector<ll> v(n); fl(i,0,n) {cin>>v[i];}
+#define InArr(a,n)                  ll a[n]; fl(i,0,n) {cin>>a[i];}
 #define InArrSum(a,n,sum)           ll a[n]; fl(i,0,n) {cin>>a[i]; sum += a[i];}
+#define InVecSum(v,n,sum)           vector<ll> v(n); fl(i,0,n) {cin>>v[i]; sum += v[i];}
+
 #define sz(s)                       s.size()
 
 #define dsc                         greater<ll>()
 #define all(x)                      (x).begin(), (x).end()
 
-#define println(n)                  cout << n << "\n"   
-#define printls(n)                  cout << n << " "
-#define print(n)                    cout << n
-#define ln                          cout << endl
+#define pln(n)                      cout << n << "\n"   
+#define pls(n)                      cout << n << " "   
+#define pt(n)                       cout << n
+#define ln                          cout << "\n"   
 
-
-#define printArrVec(a)              for(auto it:a) cout<<it<<" "
-#define p1(a);                      cout<<a<<endl;    			                                   
-#define p2(a,b);                    cout<<a<<" "<<b<<endl;                                      
-#define p3(a,b,c);                  cout<<a<<" "<<b<<" "<<c<<endl; 
-#define YES                         println("YES")
-#define Yes                         println("Yes")
-#define NO                          println("NO")
-#define No                          println("No")
+#define pmap(mp)                    for(auto i: mp) {p2(i.ff,i.ss);}
+#define printArrVec(a)              for(auto it:a)  {cout<<it<<" ";} ln;
+#define p1(a);                      cout<< a << "\n";   
+#define p2(a,b);                    cout<< a <<" "<< b << "\n";      
+#define p3(a,b,c);                  cout<< a <<" "<< b <<" "<< c << "\n";
+#define YES                         pln("YES")
+#define Yes                         pln("Yes")
+#define NO                          pln("NO")
+#define No                          pln("No")
 
 #define mod 1000000007
 
+// look for time complexity  
+// AT
 void solve(){
-    in2(n, k);
-    ll x = 1;
-    while(1){
-        x++;
-        if(x==((n*k)/(x%k))){
-            p1(x);
-            return;
-        }
+    in2(n,k);
+    
+    ll x=k-1;
+
+
+    while( n%x != 0){
+        x--;
     }
+    p1((n/x) * k+x );
+    
+
 }
 
-//int32_t
-int32_t main()
-{
+//int32_t 
+int32_t main(){
 
     ios_base::sync_with_stdio(false);
     cin.tie(0);cout.tie(0);
 
-    //in1(T);  while(T--) 
+    //in1(T);  while(T--)  
         solve();
         
     return 0;
